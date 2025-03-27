@@ -1,0 +1,365 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('operius-mono.ttf')  format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+  }
+  
+
+body {
+    font-family: 'MyCustomFont';
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/static/background.webp');
+    background-color: darkgray;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.container {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: 1rem;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    padding: 0 1rem;
+}
+
+.countdown {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.time-block {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 80px;
+    flex: 1;
+    max-width: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s ease;
+}
+
+.time-block:active {
+    transform: scale(0.95);
+}
+
+.number {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+.label {
+    font-size: small;
+    text-transform: uppercase;
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+}
+
+.target-datetime {
+    margin-top: 1.5rem;
+    font-size: medium;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    word-wrap: break-word;
+}
+
+.map-container {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 480px;
+    border: none;
+    display: block;
+    position: relative;
+    z-index: 3;
+}
+
+.audio-controls {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: 90%;
+    max-width: 300px;
+}
+
+.audio-controls audio {
+    width: 100%;
+    height: 40px;
+}
+
+.audio-controls audio::-webkit-media-controls-panel {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.audio-controls audio::-webkit-media-controls-current-time-display,
+.audio-controls audio::-webkit-media-controls-time-remaining-display {
+    color: white;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .countdown {
+        gap: 0.5rem;
+    }
+
+    .time-block {
+        padding: 0.8rem;
+        min-width: 70px;
+    }
+
+    .map-container {
+        margin-top: 1rem;
+        width: 95%;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    .audio-controls {
+        bottom: 5px;
+        right: 5px;
+        padding: 5px;
+    }
+
+    .video-container video {
+        width: 95%;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        margin: 0.5rem;
+        padding: 0.8rem;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+        font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .countdown {
+        gap: 0.5rem;
+    }
+
+    .time-block {
+        padding: 0.5rem;
+    }
+
+    .number {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .label {
+        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    }
+
+    .target-datetime {
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+
+    .map-container {
+        margin-top: 1rem;
+        width: 95%;
+    }
+
+    .map-container iframe {
+        height: 250px;
+    }
+
+    .video-container video {
+        width: 95%;
+        max-height: 300px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.video-container {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Video controls styling */
+.video-container video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 0 0 10px 10px;
+}
+
+.video-container video::-webkit-media-controls-play-button,
+.video-container video::-webkit-media-controls-timeline,
+.video-container video::-webkit-media-controls-current-time-display,
+.video-container video::-webkit-media-controls-time-remaining-display,
+.video-container video::-webkit-media-controls-mute-button,
+.video-container video::-webkit-media-controls-volume-slider {
+    color: white;
+}
+
+.video-container video::-webkit-media-controls-volume-slider {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.video-container video::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+    background: white;
+    border-radius: 50%;
+}
+
+.celebration-container {
+    display: contents;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.celebration-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    text-align: center;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+/* Mobile-specific adjustments for celebration */
+@media (max-width: 480px) {
+    .celebration-container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .celebration-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .video-container {
+        max-width: 100%;
+    }
+
+    .video-container video::-webkit-media-controls-panel {
+        padding: 5px;
+    }
+}
+
+/* Landscape mode adjustments for celebration */
+@media (max-height: 500px) and (orientation: landscape) {
+    .celebration-container {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+
+    .celebration-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .video-container {
+        max-height: 70vh;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+} 

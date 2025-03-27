@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preload" href="alagard.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <div class="container">
+        <h1>countdown</h1>
+        <div class="countdown">
+            <div class="time-block">
+                <div class="number" id="days">{{ days }}</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-block">
+                <div class="number" id="hours">{{ hours }}</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-block">
+                <div class="number" id="minutes">{{ minutes }}</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-block">
+                <div class="number" id="seconds">{{ seconds }}</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+        <div class="target-datetime">
+            Target Date and Time: {{ target_datetime }}
+        </div>
+    </div>
+
+
+    <script>
+        // Pass the target datetime to JavaScript
+        const targetDateTime = "{{ target_datetime }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,38 @@
+# Ignore any files or directories that match these patterns
+
+*~
+*.pyc
+*.pyo
+*.swp
+*.log
+*.lock
+*.pid
+*.cache
+*.db
+*.sqlite3
+*.egg-info/
+__pycache__/
+
+# Ignore virtualenv directories (e.g. .venv)
+.venv
+.env
+venv/
+
+
+# Ignore IDE-specific files and folders
+.idea/
+.vscode/
+.pycharm/
+.sublime-text/
+
+# Ignore system-wide Python cache directory
+/Library/Python*
+
+# Ignore system-wide Python logs
+/var/log/python*
+
+# Ignore Mac OS X system-specific files
+/System/Library/Frameworks/Python.framework/Versions/
+
+# Ignore Linux distribution-specific files
+/usr/lib64/python*/site-packages/
